@@ -1,12 +1,18 @@
 package com.example.foodrecyclerapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,5 +44,23 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         //Your Recycler Now has the Data from Recycler Adapter.
         // RUN the App
-    }
-}
+
+        //Find Bottom sheet
+        val bottom_sheet : FrameLayout = findViewById(R.id.bottom_sheet_container)
+        BottomSheetBehavior.from(bottom_sheet).apply {
+            peekHeight = 330
+            this.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
+
+        //Find Order Button
+        val order = findViewById<Button>(R.id.btnorder)
+        order.setOnClickListener {
+            val i = Intent(applicationContext, OrderActivity::class.java)
+            startActivity(i)
+        }
+
+
+
+
+    }//end onCreate
+}//end Class
