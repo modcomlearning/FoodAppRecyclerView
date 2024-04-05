@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -57,7 +58,20 @@ class MainActivity : AppCompatActivity() {
         order.setOnClickListener {
             val i = Intent(applicationContext, OrderActivity::class.java)
             startActivity(i)
+        }//
+
+        //Find More Button
+        val more = findViewById<Button>(R.id.btnmore)
+        more.setOnClickListener {
+            val i = Intent(applicationContext, SharedActivity::class.java)
+            startActivity(i)
         }
+
+
+        //Check If there is name saved  user preference named
+        val prefs = this.getSharedPreferences("storage", MODE_PRIVATE)
+        val inputname = prefs.getString("inputname", "")
+        Toast.makeText(applicationContext, "Welcome $inputname", Toast.LENGTH_SHORT).show()
 
     }//end onCreate
 }//end Class
