@@ -59,8 +59,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
         }
 
-
-
-
     }//end onCreate
 }//end Class
